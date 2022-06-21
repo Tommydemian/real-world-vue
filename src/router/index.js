@@ -1,20 +1,30 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "../views/HomeView.vue";
+import EventList from "../views/EventList.vue";
 
 const routes = [
   {
     path: "/",
-    name: "home",
-    component: HomeView,
+    name: "EventList",
+    component: EventList,
   },
   {
     path: "/about",
     name: "about",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/AboutView.vue"),
+  },
+  {
+    path: "/form",
+    name: "MainForm",
+    component: () =>
+      import(/* webpackChunkName: "form" */ "../views/MainForm.vue"),
+  },
+  {
+    path: "/event/:id",
+    props: true,
+    name: "EventDetails",
+    component: () =>
+      import(/* webpackChunkName: "details" */ "../views/EventDetails.vue"),
   },
 ];
 
